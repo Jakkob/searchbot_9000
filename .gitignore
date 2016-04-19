@@ -1,0 +1,11 @@
+# Ignore the secrets.yml file
+/config/secrets.yml
+
+# Ignore contents of source_data folder
+/source_data/*
+
+# Ignore Gemfile.lock
+/Gemfile.lock
+
+# Ignore SmartGit out file
+/nohup.out

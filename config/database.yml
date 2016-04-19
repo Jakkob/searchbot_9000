@@ -1,0 +1,17 @@
+default: &default
+  adapter: sqlserver
+  encoding: utf8
+  reconnect: false
+  host: <%= secrets.database.host %>
+  port: 1433
+  username: <%= secrets.database.user %>
+  password: <%= secrets.database.password %>
+  timeout: 25
+
+encore:
+  <<: *default
+  database: Encore
+
+main:
+  <<: *default
+  database: GoogleBot
