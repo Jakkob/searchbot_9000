@@ -57,6 +57,7 @@ EOT
 			require "#{$ROOT_DIR}/lib/test_script"
 		end
 
+		# TODO: Add command for generating a 'secrets.yml' file! That would be nice! ^~^
 		private
 		def parse_command(command)
       case command
