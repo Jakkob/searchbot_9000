@@ -2,10 +2,10 @@ default: &default
   adapter: sqlserver
   encoding: utf8
   reconnect: false
-  host: <%= secrets.database.host %>
+  host: <%= SearchBot::SECRETS.database.host %>
   port: 1433
-  username: <%= secrets.database.user %>
-  password: <%= secrets.database.password %>
+  username: <%= SearchBot::SECRETS.database.user %>
+  password: <%= SearchBot::SECRETS.database.password %>
   timeout: 25
 
 encore:

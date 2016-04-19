@@ -1,29 +1,45 @@
-require 'google-search'
+require 'logger'
+require 'yaml'
+require 'hashie'
+require 'pathname'
 
-def print_thing(res)
-	puts res.index
-	puts res.title
-	puts res.uri
-	puts res.content
-	puts res.cache_uri
+# $ROOT_DIR = Pathname("#{File.expand_path('../', __FILE__)}")
+
+# TODO: Add custom Exception to inform user that they do not have a 'secrets.yml' file!
+# TODO: Also, move this out of a global variable and into a class. This is unsafe. xD
+module SearchBot
+	SearchBot::SECRETS = Hashie::Mash.load("#{$ROOT_DIR}/config/secrets.yml")
 end
 
-ENV["http_proxy"] = "http://216.231.209.120:8080"
+require "#{$ROOT_DIR}/lib/database"
 
-cse_id = "011658049436509675749:mpshzk7cxw8"
+logger = Logger.new("#{$ROOT_DIR}/logs/main.log")
+logger.formatter = Logger::Formatter.new
 
-first_name = "mark"
-last_name = "prisby"
+# def print_thing(res)
+# 	puts res.index
+# 	puts res.title
+# 	puts res.uri
+# 	puts res.content
+# 	puts res.cache_uri
+# end
 
-results = Google::Search::Web.new(:query => %(#{first_name} #{last_name} (mortgage OR bank OR "real estate")), :cx => cse_id)
+# ENV["http_proxy"] = "http://216.231.209.120:8080"
 
-# puts results.inspect
+# cse_id = "011658049436509675749:mpshzk7cxw8"
 
-important_results = results.select do |x|
-	stuff = x.title.split(" ")
-	stuff.each { |y| y.downcase! }
+# first_name = "mark"
+# last_name = "prisby"
+
+# results = Google::Search::Web.new(:query => %(#{first_name} #{last_name} (mortgage OR bank OR "real estate")), :cx => cse_id)
+
+# # puts results.inspect
+
+# important_results = results.select do |x|
+# 	stuff = x.title.split(" ")
+# 	stuff.each { |y| y.downcase! }
 	
-	stuff.include?(first_name) && stuff.include?(last_name)
-end
+# 	stuff.include?(first_name) && stuff.include?(last_name)
+# end
 
-important_results.each { |z| print_thing z }
+# important_results.each { |z| print_thing z }

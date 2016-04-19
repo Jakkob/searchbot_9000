@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require 'pathname'
+$ROOT_DIR = Pathname("#{File.expand_path('../../', __FILE__)}")
+
+# require_relative "../lib/commands"
+require "#{$ROOT_DIR}/lib/commands"

@@ -1,13 +1,19 @@
-require 'activerecord'
+require 'active_record'
 require 'activerecord-sqlserver-adapter'
 require 'tiny_tds'
 
-# TODO configure this logger globally...
-# ActiveRecord::Base.logger = Logger.new('../logs/debug.log')
-db_config = YAML::load(IO.read('../config/database.yml'))
+require 'erb'
 
-ActiveRecord::Base.establish_connection(db_config['main'])
+ActiveRecord::Base.logger = Logger.new("#{$ROOT_DIR}/logs/db.log")
+ActiveRecord::Base.logger.formatter = Logger::Formatter.new
 
-class Socket < ActiveRecord::Base
-	self.establish_connection(db_config['encore'])
+template = ERB.new File.read("#{$ROOT_DIR}/config/database.yml")
+$db_config = YAML.load template.result binding
+
+ActiveRecord::Base.establish_connection($db_config['main'])
+
+class EncoreSocket < ActiveRecord::Base
+	self.establish_connection($db_config['encore'])
 end
+
+require "#{$ROOT_DIR}/lib/models"
