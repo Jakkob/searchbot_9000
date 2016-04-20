@@ -18,7 +18,7 @@ The available SearchBot commands are:
 Additional commands are in progress...\n
 EOT
 
-		COMMAND_WHITELIST = %W(find_person mine help test)
+		COMMAND_WHITELIST = %W(find_person mine help test etl)
 
 		def initialize(argv)
 			@argv = argv
@@ -49,6 +49,10 @@ EOT
 			write_placeholder_text
 		end
 
+		def etl
+			require_command! "etl"
+		end
+
 		def test
 			require "#{$ROOT_DIR}/lib/test_script"
 		end
@@ -71,6 +75,10 @@ EOT
     def write_placeholder_text
     	print "In-progress...\nIncluded arguments: "
     	puts @argv.join("")
+    end
+
+    def require_command!(command)
+      require "#{$ROOT_DIR}/lib/commands/#{command}_command"
     end
 	end
 end

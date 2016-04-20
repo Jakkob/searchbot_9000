@@ -6,7 +6,7 @@ default: &default
 encore:
   <<: *default
   adapter: sqlserver
-  database: Encore
+  database: StagingDB
   host: <%= SearchBot::SECRETS.encore_database.host %>
   port: 1433
   username: <%= SearchBot::SECRETS.encore_database.user %>

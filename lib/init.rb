@@ -13,8 +13,8 @@ end
 require "#{$ROOT_DIR}/lib/database"
 
 # Create a new logger and apply better formatting
-logger = Logger.new("#{$ROOT_DIR}/logs/main.log")
-logger.formatter = Logger::Formatter.new
+SearchBot::LOGGER = Logger.new("#{$ROOT_DIR}/logs/main.log")
+SearchBot::LOGGER.formatter = Logger::Formatter.new
 
 # def print_thing(res)
 # 	puts res.index
