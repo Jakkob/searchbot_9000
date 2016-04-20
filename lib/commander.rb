@@ -28,7 +28,7 @@ EOT
 			command = parse_command(command)
 
 			if COMMAND_WHITELIST.include?(command)
-				require "#{$ROOT_DIR}/lib/init" unless command == 'help'
+				require "#{$ROOT_DIR}/lib/init" unless command == 'help' # The 'help' command should not load the init script. Don't load the DB if you don't have to!
 				send(command)
 			else
 				puts "You attempted to use an unsupported command, please try again..."
@@ -41,16 +41,12 @@ EOT
 
 		# TODO: Write this method once I have more application code
 		def find_person
-			puts "In-progress..."
-			print "Included arguments: "
-			puts @argv.join("")
+			write_placeholder_text
 		end
 
 		# TODO: Write this method once I have more application code
 		def mine
-			puts "In-progress..."
-			print "Included arguments: "
-			puts @argv.join("")
+			write_placeholder_text
 		end
 
 		def test
@@ -70,6 +66,11 @@ EOT
 
     def write_help_message
       puts HELP_MESSAGE
+    end
+
+    def write_placeholder_text
+    	print "In-progress...\nIncluded arguments: "
+    	puts @argv.join("")
     end
 	end
 end

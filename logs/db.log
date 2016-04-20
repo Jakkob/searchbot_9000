@@ -1,1 +1,25 @@
 # Logfile created on 2016-04-19 16:53:22 -0400 by logger.rb/47272
+D, [2016-04-20T12:56:58.336848 #25408] DEBUG -- :   [1m[36m (34.9ms)[0m  [1mCREATE DATABASE "SearchBot" ENCODING = 'utf8' LC_COLLATE = 'utf8_unicode_ci'[0m
+D, [2016-04-20T12:57:53.172962 #25550] DEBUG -- :   [1m[36m (685.7ms)[0m  [1mCREATE DATABASE "SearchBot" ENCODING = 'utf8'[0m
+D, [2016-04-20T12:58:02.322699 #25581] DEBUG -- :   [1m[36m (50.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+D, [2016-04-20T12:58:02.405863 #25581] DEBUG -- :   [1m[35m (79.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+D, [2016-04-20T12:58:02.409038 #25581] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-04-20T12:58:02.421141 #25581]  INFO -- : Migrating to CreatePeople (1)
+D, [2016-04-20T12:59:19.869885 #25651] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-04-20T12:59:19.873155 #25651]  INFO -- : Migrating to CreatePeople (1)
+D, [2016-04-20T12:59:48.458953 #25705] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-04-20T12:59:48.462009 #25705]  INFO -- : Migrating to CreatePeople (1)
+D, [2016-04-20T12:59:48.463534 #25705] DEBUG -- :   [1m[35m (0.4ms)[0m  BEGIN
+D, [2016-04-20T12:59:48.568270 #25705] DEBUG -- :   [1m[36m (102.8ms)[0m  [1mCREATE TABLE "people" ("id" serial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "encore_guid" character varying NOT NULL, "city" character varying, "state" character varying, "resume_year" integer, "last_known_employer" character varying, "last_known_title" character varying, "last_known_start_date" integer, "resume_link" character varying, "created_at" timestamp, "updated_at" timestamp) [0m
+D, [2016-04-20T12:59:48.615600 #25705] DEBUG -- :   [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "1"]]
+D, [2016-04-20T12:59:48.632783 #25705] DEBUG -- :   [1m[36m (16.9ms)[0m  [1mCOMMIT[0m
+I, [2016-04-20T12:59:48.632881 #25705]  INFO -- : Migrating to CreateLinkedinLeads (2)
+D, [2016-04-20T12:59:48.634828 #25705] DEBUG -- :   [1m[35m (0.4ms)[0m  BEGIN
+D, [2016-04-20T12:59:48.743748 #25705] DEBUG -- :   [1m[36m (105.8ms)[0m  [1mCREATE TABLE "linkedin_leads" ("id" serial primary key, "title" character varying NOT NULL, "url" character varying NOT NULL, "rank" integer NOT NULL, "valid" boolean DEFAULT 't' NOT NULL, "person_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+D, [2016-04-20T12:59:48.746108 #25705] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "2"]]
+D, [2016-04-20T12:59:48.766354 #25705] DEBUG -- :   [1m[36m (20.0ms)[0m  [1mCOMMIT[0m
+I, [2016-04-20T12:59:48.766530 #25705]  INFO -- : Migrating to CreateIndeedLeads (3)
+D, [2016-04-20T12:59:48.769117 #25705] DEBUG -- :   [1m[35m (0.5ms)[0m  BEGIN
+D, [2016-04-20T12:59:48.869215 #25705] DEBUG -- :   [1m[36m (96.9ms)[0m  [1mCREATE TABLE "indeed_leads" ("id" serial primary key, "title" character varying NOT NULL, "url" character varying NOT NULL, "rank" integer NOT NULL, "valid" boolean DEFAULT 't' NOT NULL, "city" character varying, "state" character varying, "most_recent_employer" character varying, "most_recent_title" character varying, "last_updated" date, "person_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+D, [2016-04-20T12:59:48.871593 #25705] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "3"]]
+D, [2016-04-20T12:59:48.891458 #25705] DEBUG -- :   [1m[36m (19.6ms)[0m  [1mCOMMIT[0m

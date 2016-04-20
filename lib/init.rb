@@ -1,18 +1,18 @@
 require 'logger'
 require 'yaml'
 require 'hashie'
-require 'pathname'
-
-# $ROOT_DIR = Pathname("#{File.expand_path('../', __FILE__)}")
 
 # TODO: Add custom Exception to inform user that they do not have a 'secrets.yml' file!
-# TODO: Also, move this out of a global variable and into a class. This is unsafe. xD
+
+# Load the 'secrets.yml' file into memory
 module SearchBot
 	SearchBot::SECRETS = Hashie::Mash.load("#{$ROOT_DIR}/config/secrets.yml")
 end
 
+# Load the database(s)
 require "#{$ROOT_DIR}/lib/database"
 
+# Create a new logger and apply better formatting
 logger = Logger.new("#{$ROOT_DIR}/logs/main.log")
 logger.formatter = Logger::Formatter.new
 

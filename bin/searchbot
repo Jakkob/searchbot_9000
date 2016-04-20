@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
+
+# Set a global variable for the root directory for convenience
 require 'pathname'
 $ROOT_DIR = Pathname("#{File.expand_path('../../', __FILE__)}")
 
-# require_relative "../lib/commands"
+# Load the delegator script for the CLI implementation
 require "#{$ROOT_DIR}/lib/commands"

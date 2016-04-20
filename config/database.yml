@@ -1,17 +1,22 @@
 default: &default
-  adapter: sqlserver
   encoding: utf8
   reconnect: false
-  host: <%= SearchBot::SECRETS.database.host %>
-  port: 1433
-  username: <%= SearchBot::SECRETS.database.user %>
-  password: <%= SearchBot::SECRETS.database.password %>
   timeout: 25
 
 encore:
   <<: *default
+  adapter: sqlserver
   database: Encore
+  host: <%= SearchBot::SECRETS.encore_database.host %>
+  port: 1433
+  username: <%= SearchBot::SECRETS.encore_database.user %>
+  password: <%= SearchBot::SECRETS.encore_database.password %>
 
 main:
   <<: *default
-  database: GoogleBot
+  adapter: postgresql
+  database: SearchBot
+  host: <%= SearchBot::SECRETS.postgres_database.host %>
+  port: 5432
+  username: <%= SearchBot::SECRETS.postgres_database.user %>
+  password: <%= SearchBot::SECRETS.postgres_database.password %>

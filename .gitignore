@@ -9,3 +9,6 @@
 
 # Ignore SmartGit out file
 /nohup.out
+
+# Ignore log files
+/log/*.log
