@@ -11,4 +11,4 @@
 /nohup.out
 
 # Ignore log files
-/log/*.log
+/logs/*.log
