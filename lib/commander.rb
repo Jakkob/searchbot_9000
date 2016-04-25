@@ -18,15 +18,15 @@ The available SearchBot commands are:
   find_person    Attempts to find any record of a person. First & last name required.
            Ex: >$ searchbot find_person "Bob Bobberson"
   etl            Attempts to import people from the source DB within the year or year-range you include.
-           Ex: >$ searchbot mine 1999
-           Or:
-           Ex: >$ searchbot mine 1999..2000   
+           Ex: >$ searchbot etl 1999   ~OR~   >$ searchbot etl 1999..2000   
+  crawl          Attempts to internet evidence of the people from the source DB within the year or year-range you include.
+           Ex: >$ searchbot crawl 1999   ~or~   >$ searchbot crawl 1999..2000   
   help           Shows this message!
 Additional commands are in progress...
 
 MSG
 
-    COMMAND_WHITELIST = %W(find_person mine help test etl)
+    COMMAND_WHITELIST = %W(find_person help test etl crawl)
 
     def initialize(argv)
       @argv = argv
@@ -59,6 +59,10 @@ MSG
 
     def etl
       require_command! "etl"
+    end
+
+    def crawl
+    	require_command! "crawl"
     end
 
     def test

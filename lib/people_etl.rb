@@ -6,12 +6,10 @@ module SearchBot
 	class EncoreETL
 
 		attr_reader :year_one, :year_two
-		# attr_accessor :storage
 
 		def initialize(year_one, year_two = nil)
 			@year_one = validate_year(year_one)
 			@year_two = year_two || validate_year(year_one) + 1
-			# @storage = []
 		end
 
 		def run_etl_process!

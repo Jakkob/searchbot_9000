@@ -1,4 +1,4 @@
-class CreateHTTPProxies < ActiveRecord::Migration
+class CreateHttpProxies < ActiveRecord::Migration
 	def change
 		create_table :http_proxies, force: true do |t|
 			t.string :host, null: false

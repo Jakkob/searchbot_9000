@@ -1,10 +1,10 @@
-class HTTPProxy < ActiveRecord::Base
+class HttpProxy < ActiveRecord::Base
 
-	def get_random
-		HTTPProxy.order("RANDOM()").first.base_attributes
+	def self.get_random
+		self.order("RANDOM()").first.base_attributes
 	end
 
-	def self.base_attributes
+	def self.safe_attributes
 		hash = self.attributes
 		%w(id updated_at created_at).each { |x| hash.delete(x) }
 		hash
