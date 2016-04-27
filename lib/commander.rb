@@ -26,7 +26,7 @@ Additional commands are in progress...
 
 MSG
 
-    COMMAND_WHITELIST = %W(find_person help test etl crawl)
+    COMMAND_WHITELIST = %W(find_person help test etl crawl load_proxies)
 
     def initialize(argv)
       @argv = argv
@@ -63,6 +63,10 @@ MSG
 
     def crawl
     	require_command! "crawl"
+    end
+
+    def load_proxies
+      require_command! "load_proxies"
     end
 
     def test
