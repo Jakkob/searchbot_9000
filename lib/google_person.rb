@@ -37,7 +37,7 @@ module SearchBot
 		    search_results.query = %(#{@first_name} #{@last_name} #{@company} #{@state} (mortgage OR bank OR "real estate")) if spec_level == 3
 		    search_results.options[:cx] = SearchBot::SECRETS.google_search.cse_id
 		    search_results.size = :large
-		    search_results.proxy = HTTPProxy.get_random if @use_random_proxy
+		    search_results.proxy = HttpProxy.get_random if @use_random_proxy
 		    search_results.each_response { print '.'; $stdout.flush }
 		  end
 		  @results = search_results.select { |item| title_is_valid?(item) }

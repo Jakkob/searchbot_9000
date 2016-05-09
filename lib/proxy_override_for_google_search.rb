@@ -21,7 +21,7 @@ module Google
       @sent = true
       if @proxy
       	return open(get_uri, :proxy_http_basic_authentication => [URI.parse("#{@proxy[:protocol]}://#{@proxy[:host]}:#{@proxy[:port]}"), "#{@proxy[:user]}", "#{@proxy[:password]}"]).read if !@proxy[:user].nil? && !@proxy[:password].nil?
-      	return open(get_uri, :proxy => "#{@proxy[:protocol]}://#{@proxy[:host]}:#{@proxy[:port]}/")
+      	return open(get_uri, :proxy => "http://#{@proxy[:host]}:#{@proxy[:port]}/").read
       end
       open(get_uri).read
     end
